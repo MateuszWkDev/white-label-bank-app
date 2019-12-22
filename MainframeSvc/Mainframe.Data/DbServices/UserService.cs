@@ -1,13 +1,15 @@
-﻿using Mainframe.Data.Models;
-using System;
-using System.Collections.Generic;
+﻿using Mainframe.Data.Interfaces;
+using Mainframe.Data.Models;
 using System.Linq;
-using System.Text;
 
 namespace Mainframe.Data.DbServices
 {
-    public class UserDbService: BaseDbService
+    public class UserDbService : BaseDbService, IUserDbService
     {
+        UserDbService(MainframeContext dbContext): base(dbContext)
+        {
+
+        }
         public void AddUser(string name)
         {
             _mainframeContext.Users.Add(new User()

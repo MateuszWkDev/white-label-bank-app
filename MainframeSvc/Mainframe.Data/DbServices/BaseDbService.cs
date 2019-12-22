@@ -7,9 +7,9 @@ namespace Mainframe.Data.DbServices
     public abstract class BaseDbService
     {
         protected readonly MainframeContext _mainframeContext;
-        protected BaseDbService()
+        protected BaseDbService(MainframeContext dbContext)
         {
-            _mainframeContext = MainframeContext.Instance;
+            _mainframeContext = dbContext;
         }
     }
 }

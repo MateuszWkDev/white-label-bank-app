@@ -1,0 +1,25 @@
+﻿using Autofac;
+using Autofac.Integration.Wcf;
+using Mainframe.Data;
+using MainServices.Services;
+using System;
+using System.Web;
+
+namespace MainServices
+{
+    public class Global : HttpApplication
+    {
+        protected void Application_Start(object sender, EventArgs e)
+        {
+            var builder = new ContainerBuilder();
+
+            // Register your service implementations.
+            builder.RegisterType<UserService>()
+                .As<IUserService>();
+            MainframeDataDI.RegisterDependecies(builder);
+            var container = builder.Build();
+            AutofacHostFactory.Container = container;
+        }
+
+    }
+}

@@ -8,10 +8,6 @@ namespace Mainframe.Data
 {
     public class MainframeContext : DbContext
     {
-        public static readonly MainframeContext Instance = new MainframeContext(new DbContextOptionsBuilder<MainframeContext>()
-                .UseInMemoryDatabase(databaseName: "Main")
-                .Options
-        );
         public MainframeContext(DbContextOptions options)
             : base(options)
         {
