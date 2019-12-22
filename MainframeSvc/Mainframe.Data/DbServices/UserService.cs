@@ -6,7 +6,7 @@ namespace Mainframe.Data.DbServices
 {
     public class UserDbService : BaseDbService, IUserDbService
     {
-        UserDbService(MainframeContext dbContext): base(dbContext)
+        public UserDbService(MainframeContext dbContext): base(dbContext)
         {
 
         }
