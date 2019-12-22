@@ -11,5 +11,7 @@ namespace Mainframe.Data.Models
         public string Login  { get; set; }
         //Not hashed because this is only example mock app
         public string Password { get; set; }
+        public virtual ICollection<Account> Accounts { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
