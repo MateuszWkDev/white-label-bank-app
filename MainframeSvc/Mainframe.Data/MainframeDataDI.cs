@@ -17,6 +17,8 @@ namespace Mainframe.Data
             dbContext.SaveChanges();
             builder.RegisterInstance(dbContext).As<MainframeContext>().SingleInstance();
             builder.RegisterType<UserDbService>().As<IUserDbService>();
+            builder.RegisterType<AccountDbService>().As<IAccountDbService>();
+            builder.RegisterType<TransactionDbService>().As<ITransactionDbService>();
         }
 
     }

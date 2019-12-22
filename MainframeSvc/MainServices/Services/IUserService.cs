@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace MainServices.Services
 {
@@ -12,6 +8,8 @@ namespace MainServices.Services
     {
         [OperationContract]
         UserContract GetUserByLogin(string login);
+        [OperationContract]
+        int AuthenticateUser(string login, string password);
     }
 
     [DataContract]

@@ -14,6 +14,10 @@ namespace MainServices
             var builder = new ContainerBuilder();
             builder.RegisterType<UserService>()
                 .As<IUserService>();
+            builder.RegisterType<AccountService>()
+                .As<IAccountService>();
+            builder.RegisterType<TransactionService>()
+                .As<ITransactionService>();
             MainframeDataDI.RegisterDependecies(builder);
             var container = builder.Build();
             AutofacHostFactory.Container = container;
