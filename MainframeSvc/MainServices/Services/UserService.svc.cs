@@ -10,6 +10,11 @@ namespace MainServices.Services
             _userDbService = userDbService;
         }
 
+        public int AuthenticateUser(string login, string password)
+        {
+            return _userDbService.AuthenticateUser(login, password);
+        }
+
         public UserContract GetUserByLogin(string login)
         {
             var user = _userDbService.GetUserByLogin(login);

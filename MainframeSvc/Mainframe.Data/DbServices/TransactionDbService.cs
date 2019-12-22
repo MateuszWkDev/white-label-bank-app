@@ -24,7 +24,7 @@ namespace Mainframe.Data.DbServices
             var fromAccount = _mainframeContext.Accounts.Find(transaction.FromAccountId);
             var toAccount = _mainframeContext.Accounts.Find(transaction.ToAccountId);
             fromAccount.Balance -= transaction.Amount;
-            toAccount.Balance -= transaction.Amount;
+            toAccount.Balance += transaction.Amount;
             _mainframeContext.Transactions.Add(transaction);
             _mainframeContext.SaveChanges();
         }
