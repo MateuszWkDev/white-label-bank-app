@@ -24,7 +24,7 @@ namespace Mainframe.Data
                     Id = 1,
                     Login = "testUser1",
                     Name = "John Test1",
-                    Password = "test1password",
+                    Password = "test1Password",
                     Accounts = new List<Account>
                     {
                         new Account()
@@ -53,7 +53,7 @@ namespace Mainframe.Data
                     Id = 2,
                     Login = "testUser2",
                     Name = "John Test2",
-                    Password = "test2password",
+                    Password = "test2Password",
                     Accounts = new List<Account>
                     {
                         new Account()
@@ -81,7 +81,7 @@ namespace Mainframe.Data
                     Id = 3,
                     Login = "testUser3",
                     Name = "John Test3",
-                    Password = "test3password",
+                    Password = "test3Password",
                     Accounts = new List<Account>
                     {
                         new Account()

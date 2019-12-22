@@ -10,23 +10,15 @@ namespace Mainframe.Data.DbServices
         {
 
         }
-        public void AddUser(string name)
+
+        public int AuthenticateUser(string login, string password)
         {
-            _mainframeContext.Users.Add(new User()
-            {
-                Name = name
-            });
-            _mainframeContext.SaveChanges();
+            return _mainframeContext.Users.Where(user => user.Login == login && user.Password == password).Single().Id;
         }
 
         public User GetUserByLogin(string login)
         {
             return _mainframeContext.Users.Where(user => user.Login == login).SingleOrDefault();
-        }
-
-        public int GetUserCount()
-        {
-            return _mainframeContext.Users.Count();
         }
     }
 }
