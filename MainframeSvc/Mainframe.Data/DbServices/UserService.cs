@@ -19,6 +19,11 @@ namespace Mainframe.Data.DbServices
             _mainframeContext.SaveChanges();
         }
 
+        public User GetUserByLogin(string login)
+        {
+            return _mainframeContext.Users.Where(user => user.Login == login).SingleOrDefault();
+        }
+
         public int GetUserCount()
         {
             return _mainframeContext.Users.Count();

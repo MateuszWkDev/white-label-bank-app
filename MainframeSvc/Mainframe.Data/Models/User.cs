@@ -8,5 +8,8 @@ namespace Mainframe.Data.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Login  { get; set; }
+        //Not hashed because this is only example mock app
+        public string Password { get; set; }
     }
 }

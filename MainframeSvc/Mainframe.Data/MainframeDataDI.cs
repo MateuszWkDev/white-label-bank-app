@@ -13,6 +13,8 @@ namespace Mainframe.Data
                     .UseInMemoryDatabase(databaseName: "Main")
                     .Options
             );
+            dbContext.SeedData();
+            dbContext.SaveChanges();
             builder.RegisterInstance(dbContext).As<MainframeContext>().SingleInstance();
             builder.RegisterType<UserDbService>().As<IUserDbService>();
         }
