@@ -36,7 +36,6 @@ namespace MainServices.Services
         {
             _transactionDbService.PerformTransaction(new Transaction
             {
-                Id = transaction.Id,
                 Amount = transaction.Amount,
                 FromAccountId = transaction.FromAccountId,
                 ToAccountId = transaction.ToAccountId,
