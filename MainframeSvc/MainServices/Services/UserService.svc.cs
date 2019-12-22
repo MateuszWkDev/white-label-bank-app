@@ -9,14 +9,17 @@ namespace MainServices.Services
         {
             _userDbService = userDbService;
         }
-        public void AddUser(string name)
+
+        public UserContract GetUserByLogin(string login)
         {
-            _userDbService.AddUser(name);
+            var user = _userDbService.GetUserByLogin(login);
+            return new UserContract()
+            {
+                Id = user.Id,
+                Login = user.Login,
+                Name = user.Name,
+            };
         }
 
-        public int GetUserCount()
-        {
-            return _userDbService.GetUserCount();
-        }
     }
 }

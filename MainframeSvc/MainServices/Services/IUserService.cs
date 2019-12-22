@@ -7,13 +7,21 @@ using System.Text;
 
 namespace MainServices.Services
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IUserService" in both code and config file together.
     [ServiceContract]
     public interface IUserService
     {
         [OperationContract]
-        void AddUser(string name);
-        [OperationContract]
-        int GetUserCount();
+        UserContract GetUserByLogin(string login);
+    }
+
+    [DataContract]
+    public class UserContract
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public string Name { get; set; }
+        [DataMember]
+        public string Login { get; set; }
     }
 }
