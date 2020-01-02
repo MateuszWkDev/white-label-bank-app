@@ -12,6 +12,12 @@
     <WarningsAsErrors />
     <OutputPath></OutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>bin\Mainframe.Data.xml</DocumentationFile>
+  </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
