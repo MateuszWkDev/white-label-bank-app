@@ -1,11 +1,12 @@
-﻿using Mainframe.Data.Models;
-using System.Collections.Generic;
-
-namespace Mainframe.Data.Interfaces
+﻿namespace Mainframe.Data.Interfaces
 {
+    using System.Collections.Generic;
+    using Mainframe.Data.Models;
+
     public interface ITransactionDbService
     {
         List<Transaction> GetTransactionsForUser(int userId);
+
         void PerformTransaction(Transaction transaction);
     }
 }

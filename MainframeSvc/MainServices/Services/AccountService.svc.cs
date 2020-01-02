@@ -1,20 +1,17 @@
-﻿using Mainframe.Data.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-
-namespace MainServices.Services
+﻿namespace MainServices.Services
 {
+    using System.Collections.Generic;
+    using Mainframe.Data.Interfaces;
+
     public class AccountService : IAccountService
     {
         private readonly IAccountDbService _accountDbService;
+
         public AccountService(IAccountDbService accountDbService)
         {
             _accountDbService = accountDbService;
         }
+
         public AccountContract GetAccount(int id)
         {
             var account = _accountDbService.GetAccount(id);

@@ -1,11 +1,10 @@
-﻿using Mainframe.Data.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mainframe.Data
+﻿namespace Mainframe.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Mainframe.Data.Models;
+    using Microsoft.EntityFrameworkCore;
+
     public class MainframeContext : DbContext
     {
         public MainframeContext(DbContextOptions options)
@@ -14,8 +13,11 @@ namespace Mainframe.Data
         }
 
         public DbSet<User> Users { get; set; }
+
         public DbSet<Account> Accounts { get; set; }
+
         public DbSet<Transaction> Transactions { get; set; }
+
         public void SeedData()
         {
             Users.AddRange(
@@ -25,28 +27,6 @@ namespace Mainframe.Data
                     Login = "test1User",
                     Name = "John Test1",
                     Password = "test1Password",
-                    Accounts = new List<Account>
-                    {
-                        new Account()
-                        {
-                            Name = "Main",
-                            Number= "326969508270",
-                            Balance= 100000
-                        },
-                        new Account()
-                        {
-                            Name = "General Savings",
-                            Number= "559057915531",
-                            Balance= 10000
-                        },
-                        new Account()
-                        {
-                            Name = "Savings For Holiday",
-                            Number= "649673171513",
-                            Balance= 5000
-                        }
-                    }
-
                 },
                 new User
                 {
@@ -54,27 +34,6 @@ namespace Mainframe.Data
                     Login = "test2User",
                     Name = "John Test2",
                     Password = "test2Password",
-                    Accounts = new List<Account>
-                    {
-                        new Account()
-                        {
-                            Name = "Main",
-                            Number= "489939746573",
-                            Balance= 100000
-                        },
-                        new Account()
-                        {
-                            Name = "General Savings",
-                            Number= "841240720500",
-                            Balance= 10000
-                        },
-                        new Account()
-                        {
-                            Name = "Savings For Holiday",
-                            Number= "536999109546",
-                            Balance= 5000
-                        }
-                    }
                 },
                 new User
                 {
@@ -82,28 +41,28 @@ namespace Mainframe.Data
                     Login = "test3User",
                     Name = "John Test3",
                     Password = "test3Password",
-                    Accounts = new List<Account>
+                });
+            Users.ToList().ForEach(user => user.Accounts.ToList().AddRange(new List<Account>
                     {
                         new Account()
                         {
                             Name = "Main",
-                            Number= "707342708484",
-                            Balance= 100000
+                            Number = "707342708484",
+                            Balance = 100000,
                         },
                         new Account()
                         {
                             Name = "General Savings",
-                            Number= "998416035273",
-                            Balance= 10000
+                            Number = "998416035273",
+                            Balance = 10000,
                         },
                         new Account()
                         {
                             Name = "Savings For Holiday",
-                            Number= "408723509807",
-                            Balance= 5000
-                        }
-                    }
-                });
+                            Number = "408723509807",
+                            Balance = 5000,
+                        },
+                    }));
         }
     }
 }
