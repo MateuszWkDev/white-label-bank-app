@@ -1,10 +1,11 @@
-﻿using Mainframe.Data.Interfaces;
-
-namespace MainServices.Services
+﻿namespace MainServices.Services
 {
+    using Mainframe.Data.Interfaces;
+
     public class UserService : IUserService
     {
         private readonly IUserDbService _userDbService;
+
         public UserService(IUserDbService userDbService)
         {
             _userDbService = userDbService;
@@ -25,6 +26,5 @@ namespace MainServices.Services
                 Name = user.Name,
             };
         }
-
     }
 }
