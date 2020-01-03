@@ -1,7 +1,7 @@
-﻿namespace MainServices.Services
-{
-    using Mainframe.Data.Interfaces;
+﻿using Mainframe.Data.Interfaces;
 
+namespace MainServices.Services
+{
     public class UserService : IUserService
     {
         private readonly IUserDbService _userDbService;
@@ -11,7 +11,7 @@
             _userDbService = userDbService;
         }
 
-        public int AuthenticateUser(string login, string password)
+        public int? AuthenticateUser(string login, string password)
         {
             return _userDbService.AuthenticateUser(login, password);
         }

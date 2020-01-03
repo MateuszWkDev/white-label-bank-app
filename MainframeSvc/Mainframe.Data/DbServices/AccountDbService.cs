@@ -1,10 +1,10 @@
-﻿namespace Mainframe.Data.DbServices
-{
-    using System.Collections.Generic;
-    using System.Linq;
-    using Mainframe.Data.Interfaces;
-    using Mainframe.Data.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Mainframe.Data.Interfaces;
+using Mainframe.Data.Models;
 
+namespace Mainframe.Data.DbServices
+{
     public class AccountDbService : BaseDbService, IAccountDbService
     {
         public AccountDbService(MainframeContext dbContext)

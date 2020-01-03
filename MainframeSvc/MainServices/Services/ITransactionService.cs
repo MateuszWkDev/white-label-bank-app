@@ -1,9 +1,9 @@
-﻿namespace MainServices.Services
-{
-    using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.ServiceModel;
 
+namespace MainServices.Services
+{
     [ServiceContract]
     public interface ITransactionService
     {

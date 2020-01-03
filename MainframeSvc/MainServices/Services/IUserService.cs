@@ -1,8 +1,8 @@
-﻿namespace MainServices.Services
-{
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
+﻿using System.Runtime.Serialization;
+using System.ServiceModel;
 
+namespace MainServices.Services
+{
     [ServiceContract]
     public interface IUserService
     {
@@ -10,7 +10,7 @@
         UserContract GetUserByLogin(string login);
 
         [OperationContract]
-        int AuthenticateUser(string login, string password);
+        int? AuthenticateUser(string login, string password);
     }
 
     [DataContract]

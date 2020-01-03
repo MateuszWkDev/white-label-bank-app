@@ -1,7 +1,7 @@
-﻿namespace Mainframe.Data.Models
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Mainframe.Data.Models
+{
     public class User
     {
         public User()
@@ -19,8 +19,8 @@
         // Not hashed because this is only example mock app
         public string Password { get; set; }
 
-        public virtual ICollection<Account> Accounts { get; }
+        public virtual IList<Account> Accounts { get; }
 
-        public virtual ICollection<Transaction> Transactions { get; }
+        public virtual IList<Transaction> Transactions { get; }
     }
 }
