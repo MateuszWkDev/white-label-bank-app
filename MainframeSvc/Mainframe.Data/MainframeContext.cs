@@ -20,7 +20,8 @@ namespace Mainframe.Data
 
         public void SeedData()
         {
-            Users.AddRange(
+            var users = new List<User>
+            {
                 new User
                 {
                     Id = 1,
@@ -41,28 +42,31 @@ namespace Mainframe.Data
                     Login = "test3User",
                     Name = "John Test3",
                     Password = "test3Password",
+                },
+            };
+            users.ForEach(user =>
+            {
+                user.Accounts.Add(new Account()
+                {
+                    Name = "Main",
+                    Number = "707342708484",
+                    Balance = 100000,
                 });
-            Users.ToList().ForEach(user => user.Accounts.ToList().AddRange(new List<Account>
-                    {
-                        new Account()
-                        {
-                            Name = "Main",
-                            Number = "707342708484",
-                            Balance = 100000,
-                        },
-                        new Account()
-                        {
-                            Name = "General Savings",
-                            Number = "998416035273",
-                            Balance = 10000,
-                        },
-                        new Account()
-                        {
-                            Name = "Savings For Holiday",
-                            Number = "408723509807",
-                            Balance = 5000,
-                        },
-                    }));
+                user.Accounts.Add(new Account()
+                {
+                    Name = "General Savings",
+                    Number = "998416035273",
+                    Balance = 10000,
+                });
+                user.Accounts.Add(new Account()
+                {
+                    Name = "Savings For Holiday",
+                    Number = "408723509807",
+                    Balance = 5000,
+                });
+            });
+            Users.AddRange(users);
+            SaveChanges();
         }
     }
 }
