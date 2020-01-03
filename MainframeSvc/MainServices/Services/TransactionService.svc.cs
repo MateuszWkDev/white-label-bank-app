@@ -1,11 +1,11 @@
-﻿namespace MainServices.Services
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Mainframe.Data.Interfaces;
-    using Mainframe.Data.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Mainframe.Data.Interfaces;
+using Mainframe.Data.Models;
 
+namespace MainServices.Services
+{
     public class TransactionService : ITransactionService
     {
         private readonly ITransactionDbService _transactionDbService;

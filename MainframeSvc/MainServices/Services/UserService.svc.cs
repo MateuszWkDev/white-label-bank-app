@@ -1,7 +1,7 @@
-﻿namespace MainServices.Services
-{
-    using Mainframe.Data.Interfaces;
+﻿using Mainframe.Data.Interfaces;
 
+namespace MainServices.Services
+{
     public class UserService : IUserService
     {
         private readonly IUserDbService _userDbService;

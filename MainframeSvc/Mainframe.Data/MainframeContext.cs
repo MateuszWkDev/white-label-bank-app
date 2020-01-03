@@ -1,10 +1,10 @@
-﻿namespace Mainframe.Data
-{
-    using System.Collections.Generic;
-    using System.Linq;
-    using Mainframe.Data.Models;
-    using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Mainframe.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
+namespace Mainframe.Data
+{
     public class MainframeContext : DbContext
     {
         public MainframeContext(DbContextOptions options)

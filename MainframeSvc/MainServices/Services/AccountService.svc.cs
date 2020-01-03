@@ -1,8 +1,8 @@
-﻿namespace MainServices.Services
-{
-    using System.Collections.Generic;
-    using Mainframe.Data.Interfaces;
+﻿using System.Collections.Generic;
+using Mainframe.Data.Interfaces;
 
+namespace MainServices.Services
+{
     public class AccountService : IAccountService
     {
         private readonly IAccountDbService _accountDbService;

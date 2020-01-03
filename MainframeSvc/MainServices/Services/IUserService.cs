@@ -1,8 +1,8 @@
-﻿namespace MainServices.Services
-{
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
+﻿using System.Runtime.Serialization;
+using System.ServiceModel;
 
+namespace MainServices.Services
+{
     [ServiceContract]
     public interface IUserService
     {

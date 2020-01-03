@@ -1,9 +1,9 @@
-﻿namespace Mainframe.Data.DbServices
-{
-    using System.Linq;
-    using Mainframe.Data.Interfaces;
-    using Mainframe.Data.Models;
+﻿using System.Linq;
+using Mainframe.Data.Interfaces;
+using Mainframe.Data.Models;
 
+namespace Mainframe.Data.DbServices
+{
     public class UserDbService : BaseDbService, IUserDbService
     {
         public UserDbService(MainframeContext dbContext)

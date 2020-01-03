@@ -1,10 +1,10 @@
-﻿namespace Mainframe.Data
-{
-    using Autofac;
-    using Mainframe.Data.DbServices;
-    using Mainframe.Data.Interfaces;
-    using Microsoft.EntityFrameworkCore;
+﻿using Autofac;
+using Mainframe.Data.DbServices;
+using Mainframe.Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
+namespace Mainframe.Data
+{
     public static class MainframeDataDI
     {
         public static void RegisterDependecies(ContainerBuilder builder)

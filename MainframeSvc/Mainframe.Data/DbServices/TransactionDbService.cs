@@ -1,11 +1,11 @@
-﻿namespace Mainframe.Data.DbServices
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Mainframe.Data.Interfaces;
-    using Mainframe.Data.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Mainframe.Data.Interfaces;
+using Mainframe.Data.Models;
 
+namespace Mainframe.Data.DbServices
+{
     public class TransactionDbService : BaseDbService, ITransactionDbService
     {
         public TransactionDbService(MainframeContext dbContext)

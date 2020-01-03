@@ -1,7 +1,7 @@
-﻿namespace Mainframe.Data.Models
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Mainframe.Data.Models
+{
     public class User
     {
         public User()

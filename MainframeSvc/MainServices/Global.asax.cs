@@ -1,12 +1,12 @@
-﻿namespace MainServices
-{
-    using System;
-    using System.Web;
-    using Autofac;
-    using Autofac.Integration.Wcf;
-    using Mainframe.Data;
-    using MainServices.Services;
+﻿using System;
+using System.Web;
+using Autofac;
+using Autofac.Integration.Wcf;
+using Mainframe.Data;
+using MainServices.Services;
 
+namespace MainServices
+{
 #pragma warning disable CA1716 // Identifiers should not match keywords
     public class Global : HttpApplication
 #pragma warning restore CA1716 // Identifiers should not match keywords

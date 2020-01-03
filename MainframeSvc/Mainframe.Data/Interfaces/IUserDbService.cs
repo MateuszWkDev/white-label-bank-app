@@ -1,7 +1,7 @@
-﻿namespace Mainframe.Data.Interfaces
-{
-    using Mainframe.Data.Models;
+﻿using Mainframe.Data.Models;
 
+namespace Mainframe.Data.Interfaces
+{
     public interface IUserDbService
     {
         User GetUserByLogin(string login);
