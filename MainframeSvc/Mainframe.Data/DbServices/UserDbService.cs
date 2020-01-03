@@ -11,9 +11,9 @@ namespace Mainframe.Data.DbServices
         {
         }
 
-        public int AuthenticateUser(string login, string password)
+        public int? AuthenticateUser(string login, string password)
         {
-            return MainframeContext.Users.Where(user => user.Login == login && user.Password == password).Single().Id;
+            return MainframeContext.Users.Where(user => user.Login == login && user.Password == password).SingleOrDefault()?.Id;
         }
 
         public User GetUserByLogin(string login)

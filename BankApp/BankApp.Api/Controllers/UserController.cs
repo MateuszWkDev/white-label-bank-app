@@ -1,29 +1,40 @@
 ﻿using System.Threading.Tasks;
+using BankApp.Api.Models;
+using BankApp.Application.Interfaces;
+using BankApp.Application.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using UserService;
 
 namespace BankApp.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userServiceClient;
-        private readonly ILogger<UserController> _logger;
+        private readonly IUserAppService _userService;
 
-        public UserController(IUserService userServiceClient, ILogger<UserController> logger)
+        public UserController(IUserAppService userService)
         {
-            _userServiceClient = userServiceClient;
-            _logger = logger;
+            _userService = userService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpPost("authenticate")]
+        [ProducesResponseType(typeof(UserDTO), 200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> Authenticate([FromBody]AuthenticateModel model)
         {
-            _logger.LogInformation("Test login method");
-            var tasks = new[] { _userServiceClient.AuthenticateUserAsync("test1User", "test1Password"), _userServiceClient.AuthenticateUserAsync("test1User", "test1Password") };
-            return Ok(await Task.WhenAll(tasks).ConfigureAwait(false));
+            if (model == null)
+            {
+                return BadRequest(new { message = "There is no authentication data" });
+            }
+
+            var user = await _userService.AuthenticateUserAsync(model.Username, model.Password).ConfigureAwait(false);
+
+            if (user == null)
+            {
+                return BadRequest(new { message = "Username or password is incorrect" });
+            }
+
+            return Ok(user);
         }
     }
 }

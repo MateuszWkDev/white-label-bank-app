@@ -7,25 +7,55 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserService
+namespace TransactionService
 {
     using System.Runtime.Serialization;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserContract", Namespace="http://schemas.datacontract.org/2004/07/MainServices.Services")]
-    public partial class UserContract : object
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransactionContract", Namespace="http://schemas.datacontract.org/2004/07/MainServices.Services")]
+    public partial class TransactionContract : object
     {
         
-        private int IdField;
+        private decimal AmountField;
         
-        private string LoginField;
+        private int FromAccountIdField;
         
-        private string NameField;
+        private System.Nullable<int> IdField;
+        
+        private int ToAccountIdField;
+        
+        private int UserIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id
+        public decimal Amount
+        {
+            get
+            {
+                return this.AmountField;
+            }
+            set
+            {
+                this.AmountField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FromAccountId
+        {
+            get
+            {
+                return this.FromAccountIdField;
+            }
+            set
+            {
+                this.FromAccountIdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Id
         {
             get
             {
@@ -38,52 +68,52 @@ namespace UserService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Login
+        public int ToAccountId
         {
             get
             {
-                return this.LoginField;
+                return this.ToAccountIdField;
             }
             set
             {
-                this.LoginField = value;
+                this.ToAccountIdField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name
+        public int UserId
         {
             get
             {
-                return this.NameField;
+                return this.UserIdField;
             }
             set
             {
-                this.NameField = value;
+                this.UserIdField = value;
             }
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IUserService")]
-    public interface IUserService
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TransactionService.ITransactionService")]
+    public interface ITransactionService
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByLogin", ReplyAction="http://tempuri.org/IUserService/GetUserByLoginResponse")]
-        System.Threading.Tasks.Task<UserService.UserContract> GetUserByLoginAsync(string login);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransactionService/GetTransactionsForUser", ReplyAction="http://tempuri.org/ITransactionService/GetTransactionsForUserResponse")]
+        System.Threading.Tasks.Task<TransactionService.TransactionContract[]> GetTransactionsForUserAsync(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AuthenticateUser", ReplyAction="http://tempuri.org/IUserService/AuthenticateUserResponse")]
-        System.Threading.Tasks.Task<System.Nullable<int>> AuthenticateUserAsync(string login, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransactionService/PerformTransaction", ReplyAction="http://tempuri.org/ITransactionService/PerformTransactionResponse")]
+        System.Threading.Tasks.Task PerformTransactionAsync(TransactionService.TransactionContract transaction);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface IUserServiceChannel : UserService.IUserService, System.ServiceModel.IClientChannel
+    public interface ITransactionServiceChannel : TransactionService.ITransactionService, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<UserService.IUserService>, UserService.IUserService
+    public partial class TransactionServiceClient : System.ServiceModel.ClientBase<TransactionService.ITransactionService>, TransactionService.ITransactionService
     {
         
         /// <summary>
@@ -93,47 +123,47 @@ namespace UserService
         /// <param name="clientCredentials">The client credentials</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public UserServiceClient() : 
-                base(UserServiceClient.GetDefaultBinding(), UserServiceClient.GetDefaultEndpointAddress())
+        public TransactionServiceClient() : 
+                base(TransactionServiceClient.GetDefaultBinding(), TransactionServiceClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_IUserService.ToString();
+            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_ITransactionService.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public UserServiceClient(EndpointConfiguration endpointConfiguration) : 
-                base(UserServiceClient.GetBindingForEndpoint(endpointConfiguration), UserServiceClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public UserServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(UserServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public TransactionServiceClient(EndpointConfiguration endpointConfiguration) : 
+                base(TransactionServiceClient.GetBindingForEndpoint(endpointConfiguration), TransactionServiceClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public UserServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(UserServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public TransactionServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(TransactionServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public UserServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TransactionServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(TransactionServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public TransactionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
-        public System.Threading.Tasks.Task<UserService.UserContract> GetUserByLoginAsync(string login)
+        public System.Threading.Tasks.Task<TransactionService.TransactionContract[]> GetTransactionsForUserAsync(int userId)
         {
-            return base.Channel.GetUserByLoginAsync(login);
+            return base.Channel.GetTransactionsForUserAsync(userId);
         }
         
-        public System.Threading.Tasks.Task<System.Nullable<int>> AuthenticateUserAsync(string login, string password)
+        public System.Threading.Tasks.Task PerformTransactionAsync(TransactionService.TransactionContract transaction)
         {
-            return base.Channel.AuthenticateUserAsync(login, password);
+            return base.Channel.PerformTransactionAsync(transaction);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -148,7 +178,7 @@ namespace UserService
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IUserService))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ITransactionService))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -162,27 +192,27 @@ namespace UserService
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IUserService))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ITransactionService))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:61700/Services/UserService.svc");
+                return new System.ServiceModel.EndpointAddress("http://localhost:61700/Services/TransactionService.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return UserServiceClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IUserService);
+            return TransactionServiceClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_ITransactionService);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return UserServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IUserService);
+            return TransactionServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_ITransactionService);
         }
         
         public enum EndpointConfiguration
         {
             
-            BasicHttpBinding_IUserService,
+            BasicHttpBinding_ITransactionService,
         }
     }
 }

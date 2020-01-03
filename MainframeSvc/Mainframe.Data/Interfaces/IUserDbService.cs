@@ -6,6 +6,6 @@ namespace Mainframe.Data.Interfaces
     {
         User GetUserByLogin(string login);
 
-        int AuthenticateUser(string login, string password);
+        int? AuthenticateUser(string login, string password);
     }
 }

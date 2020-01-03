@@ -11,7 +11,7 @@ namespace MainServices.Services
             _userDbService = userDbService;
         }
 
-        public int AuthenticateUser(string login, string password)
+        public int? AuthenticateUser(string login, string password)
         {
             return _userDbService.AuthenticateUser(login, password);
         }

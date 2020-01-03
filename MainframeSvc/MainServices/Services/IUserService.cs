@@ -10,7 +10,7 @@ namespace MainServices.Services
         UserContract GetUserByLogin(string login);
 
         [OperationContract]
-        int AuthenticateUser(string login, string password);
+        int? AuthenticateUser(string login, string password);
     }
 
     [DataContract]

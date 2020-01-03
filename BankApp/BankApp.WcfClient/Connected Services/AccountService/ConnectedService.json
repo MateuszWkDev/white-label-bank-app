@@ -3,14 +3,14 @@
   "Version": "15.0.31022.994",
   "ExtendedData": {
     "inputs": [
-      "http://localhost:61700/Services/UserService.svc"
+      "http://localhost:61700/Services/AccountService.svc"
     ],
     "collectionTypes": [
       "System.Array",
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, UserService"
+      "*, AccountService"
     ],
     "references": [
       "Autofac, {Autofac, 4.9.4}",

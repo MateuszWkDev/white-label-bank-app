@@ -1,13 +1,11 @@
-using System.ServiceModel;
 using Autofac;
-using BankApp.WcfClient;
+using BankApp.Api.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using UserService;
 
 namespace BankApp.Api
 {
@@ -20,7 +18,6 @@ namespace BankApp.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
@@ -30,25 +27,6 @@ namespace BankApp.Api
             services.AddControllers();
         }
 
-        public static void ConfigureContainer(ContainerBuilder builder)
-        {
-            builder
-            .Register(c => new ChannelFactory<IUserService>(
-    new BasicHttpBinding(),
-    new EndpointAddress("http://localhost:61700/Services/UserService.svc")))
-  .SingleInstance();
-
-            // Register the service interface using a lambda that creates
-            // a channel from the factory. Include the UseWcfSafeRelease()
-            // helper to handle proper disposal.
-            builder
-              .Register(c => c.Resolve<ChannelFactory<IUserService>>().CreateChannel())
-              .As<IUserService>()
-              .InstancePerLifetimeScope()
-              .UseWcfSafeRelease();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -69,6 +47,11 @@ namespace BankApp.Api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            RegistrationHelper.Register(builder, Configuration);
         }
     }
 }

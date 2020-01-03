@@ -7,22 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserService
+namespace AccountService
 {
     using System.Runtime.Serialization;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserContract", Namespace="http://schemas.datacontract.org/2004/07/MainServices.Services")]
-    public partial class UserContract : object
+    [System.Runtime.Serialization.DataContractAttribute(Name="AccountContract", Namespace="http://schemas.datacontract.org/2004/07/MainServices.Services")]
+    public partial class AccountContract : object
     {
+        
+        private decimal BalanceField;
         
         private int IdField;
         
-        private string LoginField;
-        
         private string NameField;
+        
+        private string NumberField;
+        
+        private int UserIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Balance
+        {
+            get
+            {
+                return this.BalanceField;
+            }
+            set
+            {
+                this.BalanceField = value;
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id
@@ -38,19 +55,6 @@ namespace UserService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Login
-        {
-            get
-            {
-                return this.LoginField;
-            }
-            set
-            {
-                this.LoginField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Name
         {
             get
@@ -62,28 +66,54 @@ namespace UserService
                 this.NameField = value;
             }
         }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Number
+        {
+            get
+            {
+                return this.NumberField;
+            }
+            set
+            {
+                this.NumberField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId
+        {
+            get
+            {
+                return this.UserIdField;
+            }
+            set
+            {
+                this.UserIdField = value;
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IUserService")]
-    public interface IUserService
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AccountService.IAccountService")]
+    public interface IAccountService
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByLogin", ReplyAction="http://tempuri.org/IUserService/GetUserByLoginResponse")]
-        System.Threading.Tasks.Task<UserService.UserContract> GetUserByLoginAsync(string login);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetAccount", ReplyAction="http://tempuri.org/IAccountService/GetAccountResponse")]
+        System.Threading.Tasks.Task<AccountService.AccountContract> GetAccountAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AuthenticateUser", ReplyAction="http://tempuri.org/IUserService/AuthenticateUserResponse")]
-        System.Threading.Tasks.Task<System.Nullable<int>> AuthenticateUserAsync(string login, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetAccountsForUser", ReplyAction="http://tempuri.org/IAccountService/GetAccountsForUserResponse")]
+        System.Threading.Tasks.Task<int[]> GetAccountsForUserAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface IUserServiceChannel : UserService.IUserService, System.ServiceModel.IClientChannel
+    public interface IAccountServiceChannel : AccountService.IAccountService, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<UserService.IUserService>, UserService.IUserService
+    public partial class AccountServiceClient : System.ServiceModel.ClientBase<AccountService.IAccountService>, AccountService.IAccountService
     {
         
         /// <summary>
@@ -93,47 +123,47 @@ namespace UserService
         /// <param name="clientCredentials">The client credentials</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public UserServiceClient() : 
-                base(UserServiceClient.GetDefaultBinding(), UserServiceClient.GetDefaultEndpointAddress())
+        public AccountServiceClient() : 
+                base(AccountServiceClient.GetDefaultBinding(), AccountServiceClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_IUserService.ToString();
+            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_IAccountService.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public UserServiceClient(EndpointConfiguration endpointConfiguration) : 
-                base(UserServiceClient.GetBindingForEndpoint(endpointConfiguration), UserServiceClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public UserServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(UserServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public AccountServiceClient(EndpointConfiguration endpointConfiguration) : 
+                base(AccountServiceClient.GetBindingForEndpoint(endpointConfiguration), AccountServiceClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public UserServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(UserServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public AccountServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(AccountServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public UserServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public AccountServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(AccountServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public AccountServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
-        public System.Threading.Tasks.Task<UserService.UserContract> GetUserByLoginAsync(string login)
+        public System.Threading.Tasks.Task<AccountService.AccountContract> GetAccountAsync(int id)
         {
-            return base.Channel.GetUserByLoginAsync(login);
+            return base.Channel.GetAccountAsync(id);
         }
         
-        public System.Threading.Tasks.Task<System.Nullable<int>> AuthenticateUserAsync(string login, string password)
+        public System.Threading.Tasks.Task<int[]> GetAccountsForUserAsync(int userId)
         {
-            return base.Channel.AuthenticateUserAsync(login, password);
+            return base.Channel.GetAccountsForUserAsync(userId);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -148,7 +178,7 @@ namespace UserService
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IUserService))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IAccountService))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -162,27 +192,27 @@ namespace UserService
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IUserService))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IAccountService))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:61700/Services/UserService.svc");
+                return new System.ServiceModel.EndpointAddress("http://localhost:61700/Services/AccountService.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return UserServiceClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IUserService);
+            return AccountServiceClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IAccountService);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return UserServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IUserService);
+            return AccountServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IAccountService);
         }
         
         public enum EndpointConfiguration
         {
             
-            BasicHttpBinding_IUserService,
+            BasicHttpBinding_IAccountService,
         }
     }
 }
