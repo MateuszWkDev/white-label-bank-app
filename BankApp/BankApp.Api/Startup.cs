@@ -1,5 +1,6 @@
 using Autofac;
 using BankApp.Api.DI;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +24,23 @@ namespace BankApp.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bank API", Version = "v1" });
+                var securityScheme = new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please insert login and password",
+                    Type = SecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+
+                    // This should be used for proper basic authentication config but doesn't pass Authorization header in swagger UI
+                    // Scheme = "Basic",
+                    // Type = SecuritySchemeType.Http,
+                };
+                c.AddSecurityDefinition("BasicAuthentication", securityScheme);
+                var securityReq = new OpenApiSecurityRequirement();
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
             services.AddControllers();
         }
 
@@ -41,6 +58,7 @@ namespace BankApp.Api
             });
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

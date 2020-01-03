@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BankApp.Application.Interfaces;
 using BankApp.Application.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApp.Api.Controllers
 {
     [Route("api/transaction")]
     [ApiController]
+    [Authorize]
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionAppService _transactionService;
@@ -17,11 +20,11 @@ namespace BankApp.Api.Controllers
             _transactionService = transactionService;
         }
 
-        [HttpGet("all")]
+        [HttpGet("all-for-user")]
         [ProducesResponseType(typeof(IEnumerable<TransactionDTO>), 200)]
-        public async Task<IActionResult> GetAllForUser(int userId)
+        public async Task<IActionResult> GetAllForUser()
         {
-            return Ok(await _transactionService.GetTransactionsForUserAsync(userId).ConfigureAwait(false));
+            return Ok(await _transactionService.GetTransactionsForUserAsync(int.Parse(Request.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value)).ConfigureAwait(false));
         }
 
         [HttpPost("perform")]

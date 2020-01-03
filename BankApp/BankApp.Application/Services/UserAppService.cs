@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BankApp.Application.Interfaces;
 using BankApp.Application.Models;
 using UserService;

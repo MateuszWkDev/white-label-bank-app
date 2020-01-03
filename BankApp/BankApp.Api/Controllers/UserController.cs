@@ -2,12 +2,14 @@
 using BankApp.Api.Models;
 using BankApp.Application.Interfaces;
 using BankApp.Application.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApp.Api.Controllers
 {
     [Route("api/user")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserAppService _userService;
@@ -18,6 +20,7 @@ namespace BankApp.Api.Controllers
         }
 
         [HttpPost("authenticate")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(UserDTO), 200)]
         [ProducesResponseType(400)]
         public async Task<IActionResult> Authenticate([FromBody]AuthenticateModel model)
