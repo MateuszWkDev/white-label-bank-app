@@ -1,8 +1,7 @@
-﻿using System.ServiceModel;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using UserService;
-using static UserService.UserServiceClient;
 
 namespace BankApp.Api.Controllers
 {
@@ -10,18 +9,21 @@ namespace BankApp.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserServiceClient _userServiceClient;
+        private readonly IUserService _userServiceClient;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController()
+        public UserController(IUserService userServiceClient, ILogger<UserController> logger)
         {
-            EndpointAddress address = new EndpointAddress("http://localhost:61700/Services/UserService.svc");
-            _userServiceClient = new UserServiceClient(EndpointConfiguration.BasicHttpBinding_IUserService, address);
+            _userServiceClient = userServiceClient;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _userServiceClient.AuthenticateUserAsync("test1User", "test1Password").ConfigureAwait(false));
+            _logger.LogInformation("Test login method");
+            var tasks = new[] { _userServiceClient.AuthenticateUserAsync("test1User", "test1Password"), _userServiceClient.AuthenticateUserAsync("test1User", "test1Password") };
+            return Ok(await Task.WhenAll(tasks).ConfigureAwait(false));
         }
     }
 }
