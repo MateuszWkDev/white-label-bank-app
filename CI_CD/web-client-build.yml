@@ -17,8 +17,21 @@ steps:
 
 - script: |
     npm install
-    npm lint
-    npm test
+  workingDirectory: BankApp/BankApp.WebClient
+  displayName: 'Install dependencies'
+
+- script: |
+    npm install
+    npm run lint
+  workingDirectory: BankApp/BankApp.WebClient
+  displayName: 'Run eslint'
+
+- script: |
+    npm run test-no-watch
+  workingDirectory: BankApp/BankApp.WebClient
+  displayName: 'Run tests'
+
+- script: |
     npm run build
   workingDirectory: BankApp/BankApp.WebClient
-  displayName: 'npm install, lint, test and build'
+  displayName: 'Run build'
