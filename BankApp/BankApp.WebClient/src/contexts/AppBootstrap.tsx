@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { ThemeProvider, DefaultTheme } from 'styled-components';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
 import GlobalStyle from '../styles/GlobalStyle';
 import appTheme from '../styles/app-theme';
 import ContentContext, { Content } from './ContentContext';
