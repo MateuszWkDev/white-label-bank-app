@@ -24,13 +24,13 @@ namespace BankApp.Api.Controllers
         [ProducesResponseType(typeof(IEnumerable<TransactionDTO>), 200)]
         public async Task<IActionResult> GetAllForUser()
         {
-            return Ok(await _transactionService.GetTransactionsForUserAsync(int.Parse(Request.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value)).ConfigureAwait(false));
+            return Ok(await _transactionService.GetTransactionsForUserAsync(int.Parse(Request.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value)));
         }
 
         [HttpPost("perform")]
         public async Task<IActionResult> Perform(TransactionDTO transaction)
         {
-            await _transactionService.PerformTransactionAsync(transaction).ConfigureAwait(false);
+            await _transactionService.PerformTransactionAsync(transaction);
             return Ok();
         }
     }

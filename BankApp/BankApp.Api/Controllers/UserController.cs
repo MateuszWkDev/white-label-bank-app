@@ -30,7 +30,7 @@ namespace BankApp.Api.Controllers
                 return BadRequest(new { message = "There is no authentication data" });
             }
 
-            var user = await _userService.AuthenticateUserAsync(model.Username, model.Password).ConfigureAwait(false);
+            var user = await _userService.AuthenticateUserAsync(model.Username, model.Password);
 
             if (user == null)
             {
