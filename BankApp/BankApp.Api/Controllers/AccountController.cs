@@ -24,7 +24,7 @@ namespace BankApp.Api.Controllers
         [ProducesResponseType(typeof(IEnumerable<AccountDTO>), 200)]
         public async Task<IActionResult> GetForUser()
         {
-            return Ok(await _accountService.GetAccountsForUserAsync(int.Parse(Request.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value)).ConfigureAwait(false));
+            return Ok(await _accountService.GetAccountsForUserAsync(int.Parse(Request.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value)));
         }
     }
 }
