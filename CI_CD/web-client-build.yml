@@ -20,5 +20,5 @@ steps:
     npm lint
     npm test
     npm run build
-  workingDirectory: BankApp\BankApp.WebClient
+  workingDirectory: BankApp/BankApp.WebClient
   displayName: 'npm install, lint, test and build'
