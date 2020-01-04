@@ -38,6 +38,7 @@ namespace BankApp.ContentApi
             {
                 options.Level = CompressionLevel.Optimal;
             });
+            services.AddCors();
             services.AddControllers();
         }
 
@@ -49,6 +50,12 @@ namespace BankApp.ContentApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin();
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+            });
             app.UseResponseCompression();
             app.UseSwagger();
             app.UseSwaggerUI(c =>

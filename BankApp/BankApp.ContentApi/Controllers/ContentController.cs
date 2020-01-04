@@ -37,7 +37,7 @@ namespace BankApp.ContentApi.Controllers
                 lang = DefaultLang;
             }
 
-            return Content(await GetFileContent($"{RootFolder}\\content.{lang}.json"), new MediaTypeHeaderValue("application/json"));
+            return Content(await GetFileContent($"{RootFolder}\\labels.{lang}.json"), new MediaTypeHeaderValue("application/json"));
         }
 
         [ResponseCache(Duration = 31536000, Location = ResponseCacheLocation.Client, NoStore = false)]
