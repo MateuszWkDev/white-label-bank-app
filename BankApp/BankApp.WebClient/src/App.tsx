@@ -1,17 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
-import AppBootstrap from './contexts/AppBootstrap';
+import AppBootstrap from './AppBootstrap';
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+import Main from './layout/Main';
 
 const App: React.FC = () => {
   return (
     <>
       <AppBootstrap>
-        <Container>TEST</Container>
+        <Header />
+        <Main />
+        <Footer />
       </AppBootstrap>
     </>
   );
 };
-const Container = styled.div`
-  color: ${props => props.theme.colors.primary};
-`;
 export default App;
