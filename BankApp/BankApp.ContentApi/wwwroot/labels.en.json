@@ -1,4 +1,8 @@
 {
-  "test1": "test1",
-  "test2": "test2"
+  "homeNav": "Home",
+  "aboutNav": "Go to about",
+  "dashboardNav": "Dashboard",
+  "transactionNav": "Transaction",
+  "reactPage": "Go to react.js page",
+  "netCorePage":  "Go to asp.net core page"
 }

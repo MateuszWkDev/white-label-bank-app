@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
-import GlobalStyle from '../styles/GlobalStyle';
-import appTheme from '../styles/app-theme';
-import ContentContext, { Content } from './ContentContext';
-import LabelsContext, { Labels } from './LabelsContext';
-import ContentService from '../services/ContentService';
+import { BrowserRouter as Router } from 'react-router-dom';
+import GlobalStyle from './styles/GlobalStyle';
+import appTheme from './styles/app-theme';
+import ContentContext, { Content } from './contexts/ContentContext';
+import LabelsContext, { Labels } from './contexts/LabelsContext';
+import ContentService from './services/ContentService';
 
 const AppBootstrap: React.FC = ({ children }) => {
   const [loaded, setLoaded] = useState(false);
@@ -28,7 +29,7 @@ const AppBootstrap: React.FC = ({ children }) => {
         <ContentContext.Provider value={content as Content}>
           <LabelsContext.Provider value={labels as Labels}>
             <GlobalStyle />
-            {children}
+            <Router>{children}</Router>
           </LabelsContext.Provider>
         </ContentContext.Provider>
       </ThemeProvider>
