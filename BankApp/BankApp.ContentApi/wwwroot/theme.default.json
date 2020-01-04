@@ -1,5 +1,7 @@
 {
-  "primaryColor": "e32249",
-  "secondaryColor": "f17362",
-  "blackColor": "#000000"
+  "colors": {
+    "primary": "#1b262c",
+    "secondary": "#0f4c75",
+    "bodyBackground": "white"
+  }
 }

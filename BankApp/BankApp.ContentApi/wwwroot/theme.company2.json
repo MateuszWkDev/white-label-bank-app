@@ -1,4 +1,7 @@
 {
-  "primaryColor": "5d5b6a",
-  "secondaryColor": "758184"
+  "colors": {
+    "primary": "#1b262c",
+    "secondary": "#0f4c75",
+    "bodyBackground": "white"
+  }
 }
