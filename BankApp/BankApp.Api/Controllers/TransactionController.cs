@@ -30,6 +30,12 @@ namespace BankApp.Api.Controllers
         [HttpPost("perform")]
         public async Task<IActionResult> Perform(TransactionDTO transaction)
         {
+            if (transaction == null)
+            {
+                return BadRequest(new { message = "Transaction is null" });
+            }
+
+            transaction.UserId = int.Parse(Request.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             await _transactionService.PerformTransactionAsync(transaction);
             return Ok();
         }
