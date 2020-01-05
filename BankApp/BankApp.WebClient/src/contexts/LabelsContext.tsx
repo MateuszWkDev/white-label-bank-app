@@ -8,6 +8,8 @@ export interface Labels {
   reactPage: string;
   netCorePage: string;
   appName: string;
+  aboutTitle: string;
+  aboutContent: string;
 }
 const LabelsContext = React.createContext<Labels>({} as Labels);
 LabelsContext.displayName = 'LabelsContext';

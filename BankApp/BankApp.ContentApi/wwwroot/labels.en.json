@@ -11,5 +11,7 @@
   "infoImageTitle": "Some info with image",
   "infoImageText": "Example info card",
   "someInfoTitle": "Some info",
-  "someInfoText": "Example info card"
+  "someInfoText": "Example info card",
+  "aboutTitle": "About Title",
+  "aboutContent": "About Content"
 }
