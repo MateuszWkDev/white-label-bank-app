@@ -20,7 +20,8 @@ module.exports = {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
       "@typescript-eslint/explicit-function-return-type": 0,
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "react/jsx-curly-newline" :0
     },
     settings: {
       react: {

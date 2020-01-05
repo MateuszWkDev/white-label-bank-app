@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
   return (
     <HomePageContainer>
       {homePageItems.map(item => (
-        <HomePageCard item={item} />
+        <HomePageCard key={item.title} item={item} />
       ))}
     </HomePageContainer>
   );

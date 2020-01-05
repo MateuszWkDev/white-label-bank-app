@@ -7,6 +7,7 @@ import appTheme from './styles/app-theme';
 import ContentContext, { Content } from './contexts/ContentContext';
 import LabelsContext, { Labels } from './contexts/LabelsContext';
 import ContentService from './services/ContentService';
+import UserContextProviderWrapper from './contexts/UserContextProviderWrapper';
 
 const AppBootstrap: React.FC = ({ children }) => {
   const [loaded, setLoaded] = useState(false);
@@ -14,7 +15,7 @@ const AppBootstrap: React.FC = ({ children }) => {
   const [content, setContent] = useState<Content>();
   const [labels, setLabels] = useState<Labels>();
   useEffect(() => {
-    ContentService.GetContent().then(
+    ContentService.getContent().then(
       ([contentResponse, labelsResponse, themeResponse]) => {
         setTheme(themeResponse.data);
         setContent(contentResponse.data);
@@ -34,8 +35,10 @@ const AppBootstrap: React.FC = ({ children }) => {
       <ThemeProvider theme={theme}>
         <ContentContext.Provider value={content as Content}>
           <LabelsContext.Provider value={labels as Labels}>
-            <GlobalStyle />
-            <Router>{children}</Router>
+            <UserContextProviderWrapper>
+              <GlobalStyle />
+              <Router>{children}</Router>
+            </UserContextProviderWrapper>
           </LabelsContext.Provider>
         </ContentContext.Provider>
       </ThemeProvider>
