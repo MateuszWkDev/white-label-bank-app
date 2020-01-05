@@ -2,12 +2,12 @@ import HttpClientService from './HttpClientService';
 import { User } from '../contexts/UserContext';
 import Account from '../models/Account';
 import Transaction from '../models/Transaction';
+import AppConfig from '../AppConfig';
 
-const apiUrl = 'http://localhost:61493/api';
 class BankApiService {
   static authenticate(username: string, password: string) {
     return HttpClientService.baseInstance.post<User>(
-      `${apiUrl}/user/authenticate`,
+      `${AppConfig.bankApiUrl}/user/authenticate`,
       {
         username,
         password,
@@ -17,19 +17,19 @@ class BankApiService {
 
   static getAccountsForUser() {
     return HttpClientService.authorizedInstance.get<Account[]>(
-      `${apiUrl}/account/all-for-user`,
+      `${AppConfig.bankApiUrl}/account/all-for-user`,
     );
   }
 
   static getTransactionsForUser() {
     return HttpClientService.authorizedInstance.get<Transaction[]>(
-      `${apiUrl}/transaction/all-for-user`,
+      `${AppConfig.bankApiUrl}/transaction/all-for-user`,
     );
   }
 
   static performTransaction(transaction: Transaction) {
     return HttpClientService.authorizedInstance.post(
-      `${apiUrl}/transaction/perform`,
+      `${AppConfig.bankApiUrl}/transaction/perform`,
       transaction,
     );
   }

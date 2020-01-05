@@ -3,9 +3,11 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import Routes from '../../routes/Routes';
 import UserContext from '../../contexts/UserContext';
+import LabelsContext from '../../contexts/LabelsContext';
 import BankApiService from '../../services/BankApiService';
 
 const LoginPage: React.FC = () => {
+  const labels = useContext(LabelsContext);
   const [userData, setUserData] = useState({
     login: '',
     password: '',
@@ -34,10 +36,10 @@ const LoginPage: React.FC = () => {
   }, []);
   return (
     <div>
-      <p>Please login to see page</p>
+      <p>{labels.loginPageInfo}</p>
       <Form onSubmit={submit}>
         <FormGroup>
-          <Label for="login">Login</Label>
+          <Label for="login">{labels.login}</Label>
           <Input
             name="login"
             id="login"
@@ -46,7 +48,7 @@ const LoginPage: React.FC = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password">{labels.password}</Label>
           <Input
             type="password"
             name="password"
@@ -55,7 +57,7 @@ const LoginPage: React.FC = () => {
             onChange={change}
           />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button color="primary">{labels.submitButton}</Button>
       </Form>
     </div>
   );

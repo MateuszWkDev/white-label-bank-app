@@ -2,6 +2,7 @@
   "colors": {
     "primary": "#e32249",
     "secondary": "#0f4c75",
-    "bodyBackground": "white"
+    "bodyBackground": "#ffffff",
+    "headerBackground": "#f0f0f0"
   }
 }

@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import UserContext, { User } from './UserContext';
-import ContentService from '../services/ContentService';
 import HttpClientService from '../services/HttpClientService';
 
 const UserContextProviderWrapper: React.FC = ({ children }) => {
@@ -11,7 +10,6 @@ const UserContextProviderWrapper: React.FC = ({ children }) => {
       username: userData.login,
       password,
     });
-    ContentService.getContent();
   }, []);
   const logout = useCallback(() => setUser(undefined), []);
 

@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import Account from '../../models/Account';
 import BankApiService from '../../services/BankApiService';
 import Routes from '../../routes/Routes';
+import LabelsContext from '../../contexts/LabelsContext';
 
 const getAccountIdByNumber = (accounts: Account[], accountNumber: string) =>
   accounts.find(
     account => account.number.toLowerCase() === accountNumber.toLowerCase(),
   )?.id || 0;
 const TransactionPage: React.FC = () => {
+  const labels = useContext(LabelsContext);
   const [transactionData, setTransactionData] = useState({
     fromAccountNumber: '',
     toAccountNumber: '',
@@ -55,10 +57,10 @@ const TransactionPage: React.FC = () => {
   }, []);
   return (
     <div>
-      <h4>Transaction [HC]</h4>
+      <h4>{labels.transactionHeader}</h4>
       <Form onSubmit={submit}>
         <FormGroup>
-          <Label for="fromAccountNumber">From account [HC]</Label>
+          <Label for="fromAccountNumber">{labels.fromAccountNumber}</Label>
           <Input
             name="fromAccountNumber"
             id="fromAccountNumber"
@@ -67,7 +69,7 @@ const TransactionPage: React.FC = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="toAccountNumber">To account [HC]</Label>
+          <Label for="toAccountNumber">{labels.toAccountNumber}</Label>
           <Input
             name="toAccountNumber"
             id="toAccountNumber"
@@ -76,7 +78,7 @@ const TransactionPage: React.FC = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="amount">Amount [HC]</Label>
+          <Label for="amount">{labels.amount}</Label>
           <Input
             type="number"
             step=".01"
@@ -86,7 +88,7 @@ const TransactionPage: React.FC = () => {
             onChange={change}
           />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button color="primary">{labels.submitButton}</Button>
       </Form>
     </div>
   );

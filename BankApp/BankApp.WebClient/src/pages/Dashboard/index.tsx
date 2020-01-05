@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Table } from 'reactstrap';
 import Account from '../../models/Account';
 import Transaction from '../../models/Transaction';
 import BankApiService from '../../services/BankApiService';
+import LabelsContext from '../../contexts/LabelsContext';
 
 const getAccountNameById = (accounts: Account[], id: number) =>
   accounts.find(account => account.id === id)?.name || 0;
 const DashboardPage: React.FC = () => {
+  const labels = useContext(LabelsContext);
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   useEffect(() => {
@@ -19,14 +21,14 @@ const DashboardPage: React.FC = () => {
   }, []);
   return (
     <div>
-      <h4>Dahsboard [HC]</h4>
-      <h5>Accounts [HC]</h5>
+      <h4>{labels.dashboardHeader}</h4>
+      <h5>{labels.accountsSubHeader}</h5>
       <Table>
         <thead>
           <tr>
-            <th>Name [HC]</th>
-            <th>Number [HC]</th>
-            <th>Balance [HC]</th>
+            <th>{labels.accountName}</th>
+            <th>{labels.accountNumber}</th>
+            <th>{labels.accountBalance}</th>
           </tr>
         </thead>
         <tbody>
@@ -39,12 +41,13 @@ const DashboardPage: React.FC = () => {
           ))}
         </tbody>
       </Table>
+      <h5>{labels.transactionsSubHeader}</h5>
       <Table>
         <thead>
           <tr>
-            <th>From Account [HC]</th>
-            <th>To account [HC]</th>
-            <th>Amount [HC]</th>
+            <th>{labels.fromAccount}</th>
+            <th>{labels.toAccount}</th>
+            <th>{labels.amount}</th>
           </tr>
         </thead>
         <tbody>

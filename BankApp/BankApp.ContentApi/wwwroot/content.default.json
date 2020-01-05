@@ -52,5 +52,8 @@
 			"title": "someInfoTitle",
 			"text": "someInfoText"
 		}
-	]
+	],
+	"languages": [ "en", "de", "fr" ],
+	"companies": [ "default", "company1", "company2" ],
+	"logoUrl": "/superman-logo.jpg"
 }

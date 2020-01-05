@@ -13,6 +13,8 @@ import styled from 'styled-components';
 import Routes from '../routes/Routes';
 import ContentContext from '../contexts/ContentContext';
 import LabelsContext from '../contexts/LabelsContext';
+import UserMenu from './UserMenu';
+import Logo from './Logo';
 
 const Header: React.FC = () => {
   const { navbarItems } = useContext(ContentContext);
@@ -22,7 +24,7 @@ const Header: React.FC = () => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <NavbarContainer color="light" light expand="md">
-      <NavbarBrand href="/">{labels.appName}</NavbarBrand>
+      <NavbarBrand tag={Logo} />
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
@@ -40,7 +42,7 @@ const Header: React.FC = () => {
             );
           })}
         </Nav>
-        <NavbarText>Simple Text</NavbarText>
+        <NavbarText tag={UserMenu} />
       </Collapse>
     </NavbarContainer>
   );

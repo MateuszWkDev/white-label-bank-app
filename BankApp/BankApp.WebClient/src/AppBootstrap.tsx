@@ -1,48 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import styled, { ThemeProvider, DefaultTheme } from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Spinner } from 'reactstrap';
 import GlobalStyle from './styles/GlobalStyle';
-import appTheme from './styles/app-theme';
-import ContentContext, { Content } from './contexts/ContentContext';
-import LabelsContext, { Labels } from './contexts/LabelsContext';
-import ContentService from './services/ContentService';
+
 import UserContextProviderWrapper from './contexts/UserContextProviderWrapper';
+import ContentContextProviderWrapper from './contexts/ContentContextProviderWrapper';
 
 const AppBootstrap: React.FC = ({ children }) => {
   const [loaded, setLoaded] = useState(false);
-  const [theme, setTheme] = useState<DefaultTheme>(appTheme);
-  const [content, setContent] = useState<Content>();
-  const [labels, setLabels] = useState<Labels>();
-  useEffect(() => {
-    ContentService.getContent().then(
-      ([contentResponse, labelsResponse, themeResponse]) => {
-        setTheme(themeResponse.data);
-        setContent(contentResponse.data);
-        setLabels(labelsResponse.data);
-        setLoaded(true);
-      },
-    );
-  }, []);
-  if (!loaded)
-    return (
-      <SpinnerContainer>
-        <Spinner size="lg" color="primary" />
-      </SpinnerContainer>
-    );
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <ContentContext.Provider value={content as Content}>
-          <LabelsContext.Provider value={labels as Labels}>
-            <UserContextProviderWrapper>
-              <GlobalStyle />
-              <Router>{children}</Router>
-            </UserContextProviderWrapper>
-          </LabelsContext.Provider>
-        </ContentContext.Provider>
-      </ThemeProvider>
-    </>
+    <ContentContextProviderWrapper onLoaded={setLoaded}>
+      <UserContextProviderWrapper>
+        {loaded ? (
+          <>
+            <GlobalStyle />
+            <Router>{children}</Router>
+          </>
+        ) : (
+          <SpinnerContainer>
+            <Spinner size="lg" color="primary" />
+          </SpinnerContainer>
+        )}
+      </UserContextProviderWrapper>
+    </ContentContextProviderWrapper>
   );
 };
 
