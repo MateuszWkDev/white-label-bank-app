@@ -10,8 +10,8 @@ const Footer: React.FC = () => {
   const labels = useContext(LabelsContext);
   return (
     <FooterContainer>
-      {footerItems.map(item => {
-        return item.isExternal ? (
+      {footerItems.map(item =>
+        item.isExternal ? (
           <a
             key={item.label}
             href={item.url}
@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
           <Link key={item.label} to={Routes[item.routeAlias]}>
             {labels[item.label]}
           </Link>
-        );
-      })}
+        ),
+      )}
     </FooterContainer>
   );
 };
@@ -37,6 +37,7 @@ const FooterContainer = styled.footer`
     color: #ffffff;
   }
   background-color: ${props => props.theme.colors.secondary};
+  border-top: solid ${props => props.theme.colors.primary};
   flex-shrink: 0;
   height: 75px;
   display: flex;

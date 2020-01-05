@@ -10,6 +10,7 @@ html, body, #root {
   flex-direction: column;
 }
 body {
+  min-width: 320px;
   padding: 0;
   font-family: sans-serif;
   background-color:  ${props => props.theme.colors.bodyBackground};

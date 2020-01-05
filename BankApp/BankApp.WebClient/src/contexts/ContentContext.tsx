@@ -2,18 +2,26 @@ import React from 'react';
 import { Labels } from './LabelsContext';
 import Routes from '../routes/Routes';
 
-interface NavbarItem {
+export interface NavbarItem {
   routeAlias: keyof Routes;
   label: keyof Labels;
 }
 
-interface FooterItem extends NavbarItem {
+export interface FooterItem extends NavbarItem {
   isExternal: boolean;
+  url: string;
+}
+
+export interface HomePageItem {
+  title: keyof Labels;
+  text: keyof Labels;
+  contentType: 'youTubeMovie' | 'image' | undefined;
   url: string;
 }
 export interface Content {
   navbarItems: NavbarItem[];
   footerItems: FooterItem[];
+  homePageItems: HomePageItem[];
 }
 
 const ContentContext = React.createContext<Content>({} as Content);
