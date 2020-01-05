@@ -34,6 +34,14 @@ const FooterContainer = styled.footer`
   margin-top: 25px;
   a {
     margin-right: 15px;
+    color: #ffffff;
   }
+  background-color: ${props => props.theme.colors.secondary};
+  flex-shrink: 0;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
 `;
 export default Footer;

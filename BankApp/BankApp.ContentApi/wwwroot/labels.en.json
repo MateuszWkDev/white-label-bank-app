@@ -4,5 +4,6 @@
   "dashboardNav": "Dashboard",
   "transactionNav": "Transaction",
   "reactPage": "Go to react.js page",
-  "netCorePage":  "Go to asp.net core page"
+  "netCorePage": "Go to asp.net core page",
+  "appName":  "Bank Application"
 }
