@@ -22,6 +22,9 @@ export interface Content {
   navbarItems: NavbarItem[];
   footerItems: FooterItem[];
   homePageItems: HomePageItem[];
+  languages: string[];
+  companies: string[];
+  logoUrl: string;
 }
 
 const ContentContext = React.createContext<Content>({} as Content);

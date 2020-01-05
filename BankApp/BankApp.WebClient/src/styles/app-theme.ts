@@ -5,6 +5,7 @@ const appTheme: DefaultTheme = {
     primary: 'red',
     secondary: 'blue',
     bodyBackground: 'white',
+    headerBackground: 'white',
   },
 };
 

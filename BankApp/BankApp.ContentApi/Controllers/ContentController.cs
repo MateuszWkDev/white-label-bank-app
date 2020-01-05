@@ -52,7 +52,7 @@ namespace BankApp.ContentApi.Controllers
         public IActionResult GetLastModified()
         {
             var folderInfo = environment.ContentRootFileProvider.GetFileInfo(RootFolder);
-            return Ok(new { lastModified = folderInfo.LastModified.UtcDateTime.ToString("ddMMyyyyhhmmssfffUTC") });
+            return Ok(folderInfo.LastModified.UtcDateTime.ToString("ddMMyyyyhhmmssfffUTC"));
         }
 
         private async Task<string> GetFileContent(string fileLocation)

@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import LabelsContext from '../../contexts/LabelsContext';
 import { HomePageItem } from '../../contexts/ContentContext';
+import AppConfig from '../../AppConfig';
 
-const baseMediaUrl = 'http://localhost:50312/media';
 interface Props {
   item: HomePageItem;
 }
@@ -25,7 +25,10 @@ const HomePageCard: React.FC<Props> = ({ item }) => {
         />
       )}
       {item.contentType === 'image' && (
-        <ImageContainer src={`${baseMediaUrl}${item.url}`} alt={title} />
+        <ImageContainer
+          src={`${AppConfig.baseMediaUrl}${item.url}`}
+          alt={title}
+        />
       )}
       <p>{labels[item.text]}</p>
     </CardContainer>
