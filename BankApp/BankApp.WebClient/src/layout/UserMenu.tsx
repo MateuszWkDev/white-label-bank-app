@@ -1,13 +1,5 @@
 import React, { useContext, useState, useCallback } from 'react';
-import { NavLink as RRNavLink } from 'react-router-dom';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavbarText,
-  NavLink,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
