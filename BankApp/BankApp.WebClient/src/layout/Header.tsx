@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink as RRNavLink } from 'react-router-dom';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
   NavbarText,
   NavLink,
 } from 'reactstrap';
@@ -38,10 +37,6 @@ const Header: React.FC = () => {
               >
                 {labels[item.label]}
               </NavLink>
-
-              // <li key={Routes[item.routeAlias]}>
-              //   <Link to={Routes[item.routeAlias]}>{labels[item.label]}</Link>
-              // </li>
             );
           })}
         </Nav>
