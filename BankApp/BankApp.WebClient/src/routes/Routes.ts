@@ -6,5 +6,7 @@ class Routes {
   static dashboard = '/dashboard';
 
   static transaction = '/transaction';
+
+  static login = '/login';
 }
 export default Routes;

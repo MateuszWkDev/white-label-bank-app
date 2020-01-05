@@ -4,5 +4,12 @@
   "dashboardNav": "Dashboard",
   "transactionNav": "Transaction",
   "reactPage": "Go to react.js page",
-  "netCorePage":  "Go to asp.net core page"
+  "netCorePage": "Go to asp.net core page",
+  "appName": "Bank Application",
+  "aspNewstitle": "Asp.Net Core 3.1 Released",
+  "aspNewsText": "Here you can watch something about new ASP.Net Core",
+  "infoImageTitle": "Some info with image",
+  "infoImageText": "Example info card",
+  "someInfoTitle": "Some info",
+  "someInfoText": "Example info card"
 }
