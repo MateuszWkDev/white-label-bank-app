@@ -6,6 +6,7 @@ import AboutPage from '../pages/About';
 import TransactionPage from '../pages/Transaction';
 import LoginPage from '../pages/Login';
 import DashboardPage from '../pages/Dashboard';
+import PrivateRoute from './PrivateRoute';
 
 const MainRouting: React.FC = () => {
   return (
@@ -13,12 +14,12 @@ const MainRouting: React.FC = () => {
       <Route path={Routes.about}>
         <AboutPage />
       </Route>
-      <Route path={Routes.dashboard}>
+      <PrivateRoute path={Routes.dashboard}>
         <DashboardPage />
-      </Route>
-      <Route path={Routes.transaction}>
+      </PrivateRoute>
+      <PrivateRoute path={Routes.transaction}>
         <TransactionPage />
-      </Route>
+      </PrivateRoute>
       <Route path={Routes.login}>
         <LoginPage />
       </Route>

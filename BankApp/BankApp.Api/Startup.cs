@@ -41,6 +41,7 @@ namespace BankApp.Api
             });
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            services.AddCors();
             services.AddControllers();
         }
 
@@ -50,6 +51,14 @@ namespace BankApp.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options =>
+            {
+                options.WithOrigins("http://localhost:3000");
+                options.AllowCredentials();
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+            });
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

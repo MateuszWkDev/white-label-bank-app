@@ -25,23 +25,23 @@ namespace Mainframe.Data
                 new User
                 {
                     Id = 1,
-                    Login = "test1User",
+                    Login = "test1",
                     Name = "John Test1",
-                    Password = "test1Password",
+                    Password = "1234",
                 },
                 new User
                 {
                     Id = 2,
-                    Login = "test2User",
+                    Login = "test2",
                     Name = "John Test2",
-                    Password = "test2Password",
+                    Password = "1234",
                 },
                 new User
                 {
                     Id = 3,
-                    Login = "test3User",
+                    Login = "test3",
                     Name = "John Test3",
-                    Password = "test3Password",
+                    Password = "1234",
                 },
             };
             users.ForEach(user =>
