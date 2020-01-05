@@ -10,8 +10,8 @@ import ContentContextProviderWrapper from './contexts/ContentContextProviderWrap
 const AppBootstrap: React.FC = ({ children }) => {
   const [loaded, setLoaded] = useState(false);
   return (
-    <UserContextProviderWrapper>
-      <ContentContextProviderWrapper onLoaded={setLoaded}>
+    <ContentContextProviderWrapper onLoaded={setLoaded}>
+      <UserContextProviderWrapper>
         {loaded ? (
           <>
             <GlobalStyle />
@@ -22,8 +22,8 @@ const AppBootstrap: React.FC = ({ children }) => {
             <Spinner size="lg" color="primary" />
           </SpinnerContainer>
         )}
-      </ContentContextProviderWrapper>
-    </UserContextProviderWrapper>
+      </UserContextProviderWrapper>
+    </ContentContextProviderWrapper>
   );
 };
 
