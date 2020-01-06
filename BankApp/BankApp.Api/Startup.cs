@@ -43,6 +43,7 @@ namespace BankApp.Api
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
             services.AddCors();
             services.AddControllers();
+            services.AddApplicationInsightsTelemetry();
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
