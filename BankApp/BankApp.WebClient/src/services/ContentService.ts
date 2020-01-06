@@ -5,6 +5,7 @@ import { Content } from '../contexts/ContentContext';
 import HttpClientService from './HttpClientService';
 import AppConfig from '../AppConfig';
 
+const contentVersionUpdateInterval = 3600000;
 const contentVersionCookie = 'contentVersion';
 const getUrl = (contentType: string, version: string) =>
   `${AppConfig.contentServerUrl}/content/${contentType}/${version}`;
@@ -50,6 +51,6 @@ class ContentService {
       });
   }
 }
-setInterval(ContentService.updateVersion, 30000);
+setInterval(ContentService.updateVersion, contentVersionUpdateInterval);
 
 export default ContentService;
