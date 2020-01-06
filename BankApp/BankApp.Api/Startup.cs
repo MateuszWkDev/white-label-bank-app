@@ -46,7 +46,7 @@ namespace BankApp.Api
             services.AddApplicationInsightsTelemetry();
         }
 
-        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -55,7 +55,7 @@ namespace BankApp.Api
 
             app.UseCors(options =>
             {
-                options.WithOrigins("http://localhost:3000");
+                options.WithOrigins(Configuration["CorsOrigin"]);
                 options.AllowCredentials();
                 options.AllowAnyHeader();
                 options.AllowAnyMethod();
