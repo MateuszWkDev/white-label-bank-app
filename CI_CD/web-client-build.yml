@@ -28,7 +28,7 @@ steps:
   displayName: 'Run eslint'
 
 - script: |
-    npm run test-no-watch
+    npm run test:ci
   workingDirectory: BankApp/BankApp.WebClient
   displayName: 'Run tests'
 
