@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-test('placeholder', () => {
-  render(<div />);
+describe('App', () => {
+  test('placeholder', () => {
+    render(<div />);
+  });
 });
