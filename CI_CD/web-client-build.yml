@@ -32,6 +32,13 @@ steps:
   workingDirectory: BankApp/BankApp.WebClient
   displayName: 'Run tests'
 
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/junit.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    testRunTitle: 'React App Tests'
 - script: |
     npm run build
   workingDirectory: BankApp/BankApp.WebClient
