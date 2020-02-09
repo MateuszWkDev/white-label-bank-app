@@ -34,12 +34,6 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.artifactStagingDirectory)\Tests'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    uiTests: true
-    otherConsoleOptions: /Framework:.NETCoreApp,Version=v3.1
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
