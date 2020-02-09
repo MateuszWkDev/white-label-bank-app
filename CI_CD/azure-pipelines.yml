@@ -34,10 +34,6 @@ steps:
     Contents: '**'
     TargetFolder: '$(build.artifactStagingDirectory)\Tests'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
