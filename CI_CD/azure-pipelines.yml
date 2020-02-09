@@ -39,7 +39,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     uiTests: true
-    otherConsoleOptions: /Framework:framework35
+    otherConsoleOptions: /Framework:.NETCoreApp,Version=v3.1
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
