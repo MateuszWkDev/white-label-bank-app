@@ -3,8 +3,11 @@
 # white-label-bank-app
 
 Web: https://webclient-test-wlba.azurewebsites.net/
+
 User: test1
+
 Passsword: 1234
+
 Api: https://bankapi-test-wlba.azurewebsites.net/swagger/index.html
 
 Content Api: https://contentapi-test-wlba.azurewebsites.net/swagger/index.html
